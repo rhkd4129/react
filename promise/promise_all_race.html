@@ -1,0 +1,27 @@
+<script>
+    function timer(time){
+        return new Promise(function(resolve,reject){
+            setTimeout(function(){
+                resolve(time);
+            },time);
+            
+        });
+    }
+    // console.time('promise.all')
+    // Promise.all([timer(1000),timer(2000),timer(3000)]).then(function(result){
+    // // 이중에서 가장늦게 끝나는 작업이 끝나자마 then실행
+    //     console.log('result',result);
+    //     console.timeEnd('promise.all');
+    // });
+
+
+
+    console.time('promise.race')
+    Promise.race([timer(1000),timer(2000),timer(3000)]).then(function(result){
+    // 이중에서 제일빨리 끝난 결과를 알려줌 race는 같은 역활들끼리 결쟁을 시켜서 가장 빨리 
+        // 끝난 작업의 결과를 받아 후속작업 처리에 유용
+        console.log('result',result);
+        console.timeEnd('promise.race');
+    });
+    
+</script>
