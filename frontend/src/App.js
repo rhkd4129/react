@@ -1,22 +1,24 @@
 import './App.css';
 import { Button } from 'antd/es/radio';
 import React from 'react';
+
+const actions = {
+  init(initialValue){return {value:initialValue}},
+  increment(prevState){return{ value:prevState.value+1};},
+  decrement(prevState){return{ value:prevState.value-1};}
+}
+
+
 class Counter1 extends React.Component{
-  state={
-    value:this.props.a,
-  }
-
-  onClick = ()=>{
-    const {value} = this.state
-    this.setState({value: value+1})
-  };
-
+  state=actions.init(this.props.initialValue)
+  
   render(){
     const {value}  = this.state;
     return(
     <div>
-      counter :{value}
-      <Button onClick={this.onClick}>+1</Button>
+      counter1 :{value}
+      <Button onClick={()=>{this.setState(actions.increment)}}>+1</Button>
+      <Button onClick={()=>{this.setState(actions.decrement)}}>+1</Button>
       </div>
     )
     
@@ -25,8 +27,6 @@ class Counter1 extends React.Component{
 
 class FruitComponent extends React.Component{
   render(){
-
-    
     return(
       <div>
         <h1>좋아하는 과일</h1>
@@ -39,6 +39,21 @@ class FruitComponent extends React.Component{
   }
 }
 
+class PostDetail extends React.Component{
+  render(){
+    const {postId} = this.props;
+    return(
+      <div>
+         포스팅 #{postId}
+         <hr/>
+         포스팅 내용 ..
+      </div>
+    );
+
+
+  }
+}
+
 
 function App() {
 
@@ -46,9 +61,10 @@ function App() {
   return (
     
    <div>
-    <Counter1 a={10}/>
+    <Counter1 initialValue={10}/>
 
     <FruitComponent fruits={fruits}></FruitComponent>
+    <PostDetail postId={10}/>
    </div>
 
     
