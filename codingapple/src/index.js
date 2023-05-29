@@ -1,20 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Practice/App';
-import Pra from './Pratice';
-import App2  from './Practice/App4';
 import Counter from './Practice/Counter';
 import reportWebVitals from './reportWebVitals';
+// import Pra from './Practice/new'
+import App4 from './Practice/CounterPra';
+import TodoListPra from './Practice/TodoListPra';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     
     <Counter color='red'/>
-    <Counter color = 'green'/>
+    <Counter color='green'/>
     <Counter color='blue'/>
-    
+    <App4 text = 'abc'/>
+    <TodoListPra></TodoListPra>
+
   </React.StrictMode>
 );
 
