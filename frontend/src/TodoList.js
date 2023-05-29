@@ -1,6 +1,6 @@
 import React from "react";
 import { List,Input } from "antd";
-
+import { current, produce } from "immer";
 // class TodoItem extends React.Component{
 //     render(){
 //         const {todo} = this.props;
@@ -9,13 +9,11 @@ import { List,Input } from "antd";
 //         );
 //     }
 // }
-
 // function TodoItem({todo}){
 //     return (
 //         <li>{todo}</li>
 //     );
 // }
-
 const TodoItem=({todo}) => <li>{todo}</li>;
 
 class TodoList extends React.Component{
@@ -40,7 +38,6 @@ class TodoList extends React.Component{
             } 
         }
     };
-
     render(){
         return (
             <div style={{width:'300px',margin :'30px auto'}}>
@@ -57,7 +54,6 @@ class TodoList extends React.Component{
                 placeholder="할일을 입력해 주세요"
                 onChange={this.onChange} 
                 onKeyDown={this.onKeyDown}/>
-
               {/*   <ul>
                     {this.state.todoList.map((todo,index) =>
                     // {    return(<li>{todo}</li>);
@@ -76,9 +72,6 @@ class TodoList extends React.Component{
             </div>
         );
     }
-
-
-
 }
 
 export default TodoList;
