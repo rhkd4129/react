@@ -3,13 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import First from "./component/First";
+import Counter from "./component/Counter";
+import TodoList from "./component/TodoList";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-      <First></First>
+      <div style={{display:"flex",gap:"30px"}}>
+          <Counter bgColor={"red"} startNumber={0}></Counter>
+          <Counter bgColor={"blue"} startNumber={0}></Counter>
+          <Counter bgColor={"green"} startNumber={0}></Counter>
+      </div>
+      <div>
+          <TodoList></TodoList>
+      </div>
+
   </React.StrictMode>
 );
 
