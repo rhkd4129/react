@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Counter from "./component/Counter";
 import TodoList from "./component/TodoList";
+import TodoBoardContainer from "./component/todoList/TodoBoardContainer";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,9 +17,8 @@ root.render(
           <Counter bgColor={"green"} startNumber={0}></Counter>
       </div>
       <div>
-          <TodoList></TodoList>
+          <TodoBoardContainer></TodoBoardContainer>
       </div>
-
   </React.StrictMode>
 );
 
