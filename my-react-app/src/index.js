@@ -3,22 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Counter from "./component/Counter";
-import TodoList from "./component/TodoList";
-import TodoBoardContainer from "./component/todoList/TodoBoardContainer";
-
+import { Provider } from 'react-redux'
+import { store } from './store'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-      <div style={{display:"flex",gap:"30px"}}>
-          <Counter bgColor={"red"} startNumber={0}></Counter>
-          <Counter bgColor={"blue"} startNumber={0}></Counter>
-          <Counter bgColor={"green"} startNumber={0}></Counter>
-      </div>
-      <div>
-          <TodoBoardContainer></TodoBoardContainer>
-      </div>
+      <Provider store={store}>
+        <App />
+      </Provider>,
   </React.StrictMode>
 );
 

@@ -1,0 +1,57 @@
+JavaSciprt immutability
+
+객체 불변성
+
+mutability    변화가능한
+immutability  변화 가능하지 않은
+
+스토어 = 정보가 저장되는 곳
+스토어 안에는 state라는 실제 정보가 저장
+
+
+
+render는 내부적으로 store에서 getState로 값을 가져오고
+getState는 state에 상태값에 접근
+
+state   => getState => render => 사용자
+        <=          <=
+그럼 state가 바뀔때마다  render를 사용해 사용자한테 보여주면 좋지 않을까?
+
+그때사용하는것이 subscribe(구독)  => render함수를 subscribe에 등록한다. store.subscribe(render)
+
+
+이제 사용자와 상호작용으로 상태값이 바뀔수 있다.
+ex) 사용자가 form(submit)을 하면 action이라는 객체가 dispatch로 전달이 된다.
+dispatch는 두가지 일을 하는데 reducer를 호출해서(두개의 값 전달 현재의 state값전달 , action에 담긴 새로운 데이터) state값을 바꾸고 subscirbe을 이용해서 render함수를 호출함 -> 화면이 갱신됨
+
+리듀서는 두개의 인자를 받는다 현재의 state값과 action에 담긴 새로운 state값(데이터)
+        리턴값은 새로운 state를 반환한다.
+
+
+
+Store = {
+    state: {}, // 실제 데이터가 저장되는 곳
+    getState(), // 상태값 접근
+    dispatch(), // 액션 처리
+    subscribe() // 상태 변화 감지
+
+}
+
+컴포넌트에서 useSelector를 통해 Redux store를 구독한다. 이것은 자동으로 해당 상태 변화를 감지하게 됨.
+사용자 액션이 발생하면 (예: 버튼 클릭), 컴포넌트에서 dispatch를 통해 action을 발생시킴
+dispatch된 action은 reducer로 전달. 리듀서는:
+
+현재 state (이전 상태)  / action (새로운 변경 사항을 담은 객체)
+이 두 가지를 매개변수로 받음
+
+type: 'ACTION_TYPE', // 필수: 액션의 종류를 설명하는 문자열
+payload: data        // 선택: 상태 변경에 필요한 데이터
+
+
+
+reducer는 순수 함수로서 이전 state와 action을 기반으로 새로운 state를 생성.
+store의 상태가 업데이트되면, useSelector를 통해 구독하고 있던 모든 컴포넌트들이 자동으로 새로운 상태를 받아 필요한 경우 리렌더링.
+
+Redux Toolkit의 한 가지 장점은 이런 과정을 더 간단하게 만들어준다는 것입니다.
+createSlice를 사용하면 action creators와 reducer를 한번에 생성할 수 있고,
+immer를 내장하고 있어 불변성 관리도 더 쉽게 할 수 있습니다.
