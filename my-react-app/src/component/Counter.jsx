@@ -3,7 +3,7 @@ import '../css/counter.css'
 import { useDispatch, useSelector } from "react-redux";
 import {  increment } from "../store/counterSlice";
 
-const CounterComponent = ({ id, bgColor, startNumber }) => {
+const CounterComponent = ({ id, bgColor }) => {
     const counter = useSelector((state) =>
         state.counter.counters.find(c => c.id === id)
     );
@@ -12,7 +12,7 @@ const CounterComponent = ({ id, bgColor, startNumber }) => {
     if (!counter) return null;
 
     const handleIncrement = () => {
-        dispatch(increment(id,1));
+        dispatch(increment({id:id}));
     };
 
     const handleDecrement = (e) => {

@@ -7,11 +7,12 @@ import { Provider } from 'react-redux'
 import { store } from './store'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+    // 이 부분이 있다면, 개발 환경에서 이중 렌더링이 발생
+   // <React.StrictMode>
       <Provider store={store}>
         <App />
-      </Provider>,
-  </React.StrictMode>
+      </Provider>
+  // {/*</React.StrictMode>*/}
 );
 
 // If you want to start measuring performance in your app, pass a function

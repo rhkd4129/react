@@ -4,25 +4,28 @@ export const counterSlice = createSlice({
     name: 'counter',
     initialState: {
         counters: [
-            { id: 0, value: 0 },  // 초기값 직접 설정
-            { id: 1, value: 0 },
-            { id: 2, value: 0 }
+            // { id: 0, value: 0 },  // 초기값 직접 설정
+            // { id: 1, value: 0 },
+            // { id: 2, value: 0 }
         ]
     },
     reducers: {
         addCounter: (state, action) => {
-            // action.payload에서 startNumber와 bgColor를 받아올 수 있도록
+
             const { startNumber, bgColor } = action.payload;
             state.counters.push({
                 id: state.counters.length,
                 value: startNumber || 0,
                 bgColor: bgColor
             });
+            console.log([...state.counters])
+            // console.log가 객체의 참조를 출력하기 때문
+            // console.log(state.counters)  // Proxy 객체를 출력
+            // console.log([...state.counters])  // 실제 배열의 값을 출력
         },
         increment: (state, action) => {
-            console.log(action)
             const counter = state.counters.find(c => c.id === action.payload.id);
-            if (counter) counter.payload.value += 1;
+            if (counter) counter.value += 1;
         }
     }
 })
