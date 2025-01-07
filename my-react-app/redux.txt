@@ -55,3 +55,32 @@ store의 상태가 업데이트되면, useSelector를 통해 구독하고 있던
 Redux Toolkit의 한 가지 장점은 이런 과정을 더 간단하게 만들어준다는 것입니다.
 createSlice를 사용하면 action creators와 reducer를 한번에 생성할 수 있고,
 immer를 내장하고 있어 불변성 관리도 더 쉽게 할 수 있습니다.
+
+메모이제이션이란:
+    이전에 계산한 값을 저장해두고 동일한 입력이 들어오면 다시 계산하지 않고 저장된 값을 재사용하는 최적화 기법    쉽게 말해서 "기억해두고 재사용한다"는 개념
+    계산 비용이 큰 연산이 있을 때
+    컴포넌트가 자주 리렌더링될 때
+    동일한 props로 자주 렌더링되는 컴포넌트
+    자식 컴포넌트에 함수를 props로 전달할 때
+
+
+useCallback
+현재 방식: 컴포넌트가 리렌더링될 때마다 이벤트 핸들러 함수가 새로 생성됨
+ {/* 메모이제이션된 함수를 직접 전달 */}
+ <input type="checkbox" onChange={(e) => handlerCheckBox(e,todo.id)}/>
+ <input type="button" onClick={(e) => handlerRemoveBtn(e, todo.id)}/>
+
+개선된 방식: useCallback으로 함수를 메모이제이션하여 의존성이 변경될 때만 새로 생성
+   <input type="checkbox" onChange={handlerCheckBox}/>
+   <input type="button" onClick={handlerRemoveBtn}/>
+
+
+성능 최적화
+    특히 자식 컴포넌트에 props로 함수를 전달할 때 유용
+    자식 컴포넌트가 React.memo로 최적화되어 있다면 더욱 효과적
+    컴포넌트가 자주 리렌더링되거나, 자식 컴포넌트에 함수를 props로 전달할 때 주로 사용하면 좋습니다
+
+ React Hooks는 조건문 이전에 호출
+ 최상위에서만 Hook을 호출해야 함
+    ex)   useEffect(() => {})    // 조건문 안에서 Hook 사용
+          useState('')           // 반복문 안에서 Hook 사용

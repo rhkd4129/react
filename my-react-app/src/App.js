@@ -5,6 +5,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import { addCounter } from "../src/store/counterSlice";
 import Counter from "./component/Counter";
+import TodoBoardContainer2 from "./component/todoList2/TodoBoardContainer2";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +27,8 @@ function App() {
               ))}
           </div>
           <div>
-              <TodoBoardContainer/>
+              <TodoBoardContainer2/>
+              {/*<TodoBoardContainer/>*/}
           </div>
       </div>
   );

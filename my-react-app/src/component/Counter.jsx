@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/counter.css'
 import { useDispatch, useSelector } from "react-redux";
-import {  increment } from "../store/counterSlice";
+import {  increment ,decrement} from "../store/counterSlice";
 
 const CounterComponent = ({ id, bgColor }) => {
     const counter = useSelector((state) =>
@@ -17,7 +17,7 @@ const CounterComponent = ({ id, bgColor }) => {
 
     const handleDecrement = (e) => {
         e.preventDefault(); // 우클릭 기본 동작 방지
-        // dispatch(decrement(id));
+        dispatch(decrement({id:id}));
     };
 
     return (

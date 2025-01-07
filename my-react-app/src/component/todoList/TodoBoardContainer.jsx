@@ -4,10 +4,7 @@ import TodoListComponent from "./TodoListComponent";
 import '../../css/todoList/todoList.css'
 
 const TodoBoardContainer = ()=>{
-
-
     const [todoList , setTodoList] = useState([]);
-
     const handleAddTodo = (newTodo)=>{
         setTodoList([...todoList,newTodo])
     }
@@ -27,3 +24,5 @@ const TodoBoardContainer = ()=>{
     )
 }
 export default TodoBoardContainer;
+
+
