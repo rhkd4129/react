@@ -10,9 +10,7 @@ root.render(
     // 이 부분이 있다면, 개발 환경에서 이중 렌더링이 발생
    // <React.StrictMode>
     <Provider store={store}>
-        <BrowserRouter>
             <App />
-        </BrowserRouter>
     </Provider>
   // {/*</React.StrictMode>*/}
 );
